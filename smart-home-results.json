@@ -1,0 +1,6118 @@
+{
+  "note": "15 hand-written cases per checkpoint; includes many keep labels. Not representative production accuracy. Eight independent choices per request, CPU, 4 threads.",
+  "warmup_ms": {
+    "english": 13983.2,
+    "multilingual": 7396.0
+  },
+  "summary": {
+    "english": {
+      "exact_requests_correct": 0,
+      "requests": 15,
+      "switch_decisions_correct": 48,
+      "switch_decisions": 120,
+      "warm_median_ms": 7104.8,
+      "warm_min_ms": 6229.5,
+      "warm_max_ms": 8923.5,
+      "wrong_at_or_above_75_percent": 6
+    },
+    "multilingual": {
+      "exact_requests_correct": 1,
+      "requests": 15,
+      "switch_decisions_correct": 53,
+      "switch_decisions": 120,
+      "warm_median_ms": 2313.2,
+      "warm_min_ms": 1952.2,
+      "warm_max_ms": 2871.5,
+      "wrong_at_or_above_75_percent": 30
+    }
+  },
+  "rows": [
+    {
+      "case": "light_night",
+      "model": "english",
+      "command": "Turn the light on and set it to night mode.",
+      "expected": {
+        "light_power": "on",
+        "light_mode": "night",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "on",
+        "light_mode": "night",
+        "strip_power": "on",
+        "strip_mood": "relax",
+        "tv_power": "on",
+        "tv_app": "keep",
+        "ac_power": "on",
+        "ac_mode": "keep"
+      },
+      "errors": {
+        "strip_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.8085
+        },
+        "strip_mood": {
+          "expected": "keep",
+          "actual": "relax",
+          "answer_confidence": 0.3759
+        },
+        "tv_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.5212
+        },
+        "ac_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.497
+        }
+      },
+      "elapsed_ms": 6549.9,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.121,
+              "on": 0.796,
+              "off": 0.083
+            },
+            "confidence": 0.414,
+            "answer_confidence": 0.796,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "night",
+            "probabilities": {
+              "keep": 0.2432,
+              "night": 0.5396,
+              "normal": 0.2172
+            },
+            "confidence": 0.0822,
+            "answer_confidence": 0.5396,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.1196,
+              "on": 0.8085,
+              "off": 0.0719
+            },
+            "confidence": 0.4401,
+            "answer_confidence": 0.8085,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "relax",
+            "probabilities": {
+              "keep": 0.1286,
+              "relax": 0.3759,
+              "focus": 0.1678,
+              "party": 0.1228,
+              "movie": 0.2049
+            },
+            "confidence": 0.0597,
+            "answer_confidence": 0.3759,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.2304,
+              "on": 0.5212,
+              "off": 0.2484
+            },
+            "confidence": 0.0681,
+            "answer_confidence": 0.5212,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.3581,
+              "youtube": 0.1644,
+              "netflix": 0.2514,
+              "prime": 0.2261
+            },
+            "confidence": 0.0277,
+            "answer_confidence": 0.3581,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.2883,
+              "on": 0.497,
+              "off": 0.2147
+            },
+            "confidence": 0.0567,
+            "answer_confidence": 0.497,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.388,
+              "heat": 0.3808,
+              "cool": 0.2312
+            },
+            "confidence": 0.0228,
+            "answer_confidence": 0.388,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          }
+        },
+        "usage": {
+          "input_tokens": 600,
+          "output_tokens": 0,
+          "state_tokens": 11,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "english",
+          "repo": "convaiinnovations/laya",
+          "reason": "explicit model='english'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "strips_party",
+      "model": "english",
+      "command": "Turn on the Hyperion LED strips and set their mood to party.",
+      "expected": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "on",
+        "strip_mood": "party",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "on",
+        "light_mode": "night",
+        "strip_power": "on",
+        "strip_mood": "party",
+        "tv_power": "on",
+        "tv_app": "keep",
+        "ac_power": "on",
+        "ac_mode": "keep"
+      },
+      "errors": {
+        "light_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.8214
+        },
+        "light_mode": {
+          "expected": "keep",
+          "actual": "night",
+          "answer_confidence": 0.4331
+        },
+        "tv_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.7098
+        },
+        "ac_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.665
+        }
+      },
+      "elapsed_ms": 7622.7,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.1198,
+              "on": 0.8214,
+              "off": 0.0587
+            },
+            "confidence": 0.47,
+            "answer_confidence": 0.8214,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "night",
+            "probabilities": {
+              "keep": 0.3134,
+              "night": 0.4331,
+              "normal": 0.2536
+            },
+            "confidence": 0.0224,
+            "answer_confidence": 0.4331,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.117,
+              "on": 0.8115,
+              "off": 0.0716
+            },
+            "confidence": 0.4454,
+            "answer_confidence": 0.8115,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "party",
+            "probabilities": {
+              "keep": 0.011,
+              "relax": 0.0206,
+              "focus": 0.0045,
+              "party": 0.9589,
+              "movie": 0.005
+            },
+            "confidence": 0.8629,
+            "answer_confidence": 0.9589,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.2019,
+              "on": 0.7098,
+              "off": 0.0882
+            },
+            "confidence": 0.2895,
+            "answer_confidence": 0.7098,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.4997,
+              "youtube": 0.1904,
+              "netflix": 0.18,
+              "prime": 0.1298
+            },
+            "confidence": 0.1082,
+            "answer_confidence": 0.4997,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.2096,
+              "on": 0.665,
+              "off": 0.1254
+            },
+            "confidence": 0.2179,
+            "answer_confidence": 0.665,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.4244,
+              "heat": 0.3959,
+              "cool": 0.1797
+            },
+            "confidence": 0.0542,
+            "answer_confidence": 0.4244,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          }
+        },
+        "usage": {
+          "input_tokens": 624,
+          "output_tokens": 0,
+          "state_tokens": 14,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "english",
+          "repo": "convaiinnovations/laya",
+          "reason": "explicit model='english'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "tv_netflix",
+      "model": "english",
+      "command": "Turn on the Android TV and open Netflix.",
+      "expected": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "on",
+        "tv_app": "netflix",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "on",
+        "light_mode": "night",
+        "strip_power": "on",
+        "strip_mood": "relax",
+        "tv_power": "on",
+        "tv_app": "netflix",
+        "ac_power": "on",
+        "ac_mode": "keep"
+      },
+      "errors": {
+        "light_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.6105
+        },
+        "light_mode": {
+          "expected": "keep",
+          "actual": "night",
+          "answer_confidence": 0.4134
+        },
+        "strip_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.5531
+        },
+        "strip_mood": {
+          "expected": "keep",
+          "actual": "relax",
+          "answer_confidence": 0.4501
+        },
+        "ac_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.5739
+        }
+      },
+      "elapsed_ms": 7019.2,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.1683,
+              "on": 0.6105,
+              "off": 0.2212
+            },
+            "confidence": 0.149,
+            "answer_confidence": 0.6105,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "night",
+            "probabilities": {
+              "keep": 0.2264,
+              "night": 0.4134,
+              "normal": 0.3602
+            },
+            "confidence": 0.0267,
+            "answer_confidence": 0.4134,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.2351,
+              "on": 0.5531,
+              "off": 0.2117
+            },
+            "confidence": 0.0928,
+            "answer_confidence": 0.5531,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "relax",
+            "probabilities": {
+              "keep": 0.1377,
+              "relax": 0.4501,
+              "focus": 0.1015,
+              "party": 0.0609,
+              "movie": 0.2498
+            },
+            "confidence": 0.1417,
+            "answer_confidence": 0.4501,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.1552,
+              "on": 0.7701,
+              "off": 0.0747
+            },
+            "confidence": 0.3772,
+            "answer_confidence": 0.7701,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "netflix",
+            "probabilities": {
+              "keep": 0.0641,
+              "youtube": 0.0215,
+              "netflix": 0.8858,
+              "prime": 0.0287
+            },
+            "confidence": 0.6625,
+            "answer_confidence": 0.8858,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.2756,
+              "on": 0.5739,
+              "off": 0.1505
+            },
+            "confidence": 0.1272,
+            "answer_confidence": 0.5739,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.4306,
+              "heat": 0.3528,
+              "cool": 0.2166
+            },
+            "confidence": 0.0336,
+            "answer_confidence": 0.4306,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          }
+        },
+        "usage": {
+          "input_tokens": 584,
+          "output_tokens": 0,
+          "state_tokens": 9,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "english",
+          "repo": "convaiinnovations/laya",
+          "reason": "explicit model='english'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "ac_cool",
+      "model": "english",
+      "command": "Turn the AC on and set it to cool mode.",
+      "expected": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "on",
+        "ac_mode": "cool"
+      },
+      "actual": {
+        "light_power": "on",
+        "light_mode": "normal",
+        "strip_power": "on",
+        "strip_mood": "relax",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "on",
+        "ac_mode": "cool"
+      },
+      "errors": {
+        "light_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.5188
+        },
+        "light_mode": {
+          "expected": "keep",
+          "actual": "normal",
+          "answer_confidence": 0.3483
+        },
+        "strip_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.4802
+        },
+        "strip_mood": {
+          "expected": "keep",
+          "actual": "relax",
+          "answer_confidence": 0.5113
+        }
+      },
+      "elapsed_ms": 7321.8,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.2148,
+              "on": 0.5188,
+              "off": 0.2664
+            },
+            "confidence": 0.0687,
+            "answer_confidence": 0.5188,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "normal",
+            "probabilities": {
+              "keep": 0.3276,
+              "night": 0.3241,
+              "normal": 0.3483
+            },
+            "confidence": 0.0005,
+            "answer_confidence": 0.3483,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.2762,
+              "on": 0.4802,
+              "off": 0.2436
+            },
+            "confidence": 0.0428,
+            "answer_confidence": 0.4802,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "relax",
+            "probabilities": {
+              "keep": 0.302,
+              "relax": 0.5113,
+              "focus": 0.0932,
+              "party": 0.0501,
+              "movie": 0.0433
+            },
+            "confidence": 0.247,
+            "answer_confidence": 0.5113,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.3834,
+              "on": 0.3046,
+              "off": 0.3119
+            },
+            "confidence": 0.0051,
+            "answer_confidence": 0.3834,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.5146,
+              "youtube": 0.123,
+              "netflix": 0.2114,
+              "prime": 0.151
+            },
+            "confidence": 0.1246,
+            "answer_confidence": 0.5146,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.152,
+              "on": 0.6355,
+              "off": 0.2124
+            },
+            "confidence": 0.1776,
+            "answer_confidence": 0.6355,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "cool",
+            "probabilities": {
+              "keep": 0.0441,
+              "heat": 0.0514,
+              "cool": 0.9045
+            },
+            "confidence": 0.6532,
+            "answer_confidence": 0.9045,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 600,
+          "output_tokens": 0,
+          "state_tokens": 11,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "english",
+          "repo": "convaiinnovations/laya",
+          "reason": "explicit model='english'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "all_off",
+      "model": "english",
+      "command": "Turn off the light, the Hyperion LED strips, the Android TV and the AC.",
+      "expected": {
+        "light_power": "off",
+        "light_mode": "keep",
+        "strip_power": "off",
+        "strip_mood": "keep",
+        "tv_power": "off",
+        "tv_app": "keep",
+        "ac_power": "off",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "off",
+        "light_mode": "normal",
+        "strip_power": "off",
+        "strip_mood": "relax",
+        "tv_power": "off",
+        "tv_app": "keep",
+        "ac_power": "on",
+        "ac_mode": "heat"
+      },
+      "errors": {
+        "light_mode": {
+          "expected": "keep",
+          "actual": "normal",
+          "answer_confidence": 0.3935
+        },
+        "strip_mood": {
+          "expected": "keep",
+          "actual": "relax",
+          "answer_confidence": 0.4258
+        },
+        "ac_power": {
+          "expected": "off",
+          "actual": "on",
+          "answer_confidence": 0.5811
+        },
+        "ac_mode": {
+          "expected": "keep",
+          "actual": "heat",
+          "answer_confidence": 0.5047
+        }
+      },
+      "elapsed_ms": 8173.9,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "off",
+            "probabilities": {
+              "keep": 0.096,
+              "on": 0.3318,
+              "off": 0.5722
+            },
+            "confidence": 0.1712,
+            "answer_confidence": 0.5722,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "normal",
+            "probabilities": {
+              "keep": 0.2808,
+              "night": 0.3257,
+              "normal": 0.3935
+            },
+            "confidence": 0.0087,
+            "answer_confidence": 0.3935,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "off",
+            "probabilities": {
+              "keep": 0.0432,
+              "on": 0.1932,
+              "off": 0.7636
+            },
+            "confidence": 0.3998,
+            "answer_confidence": 0.7636,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "relax",
+            "probabilities": {
+              "keep": 0.2557,
+              "relax": 0.4258,
+              "focus": 0.1279,
+              "party": 0.0763,
+              "movie": 0.1143
+            },
+            "confidence": 0.118,
+            "answer_confidence": 0.4258,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "off",
+            "probabilities": {
+              "keep": 0.0385,
+              "on": 0.2342,
+              "off": 0.7273
+            },
+            "confidence": 0.3657,
+            "answer_confidence": 0.7273,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.6882,
+              "youtube": 0.1018,
+              "netflix": 0.0979,
+              "prime": 0.1121
+            },
+            "confidence": 0.3056,
+            "answer_confidence": 0.6882,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.1479,
+              "on": 0.5811,
+              "off": 0.2711
+            },
+            "confidence": 0.1335,
+            "answer_confidence": 0.5811,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "heat",
+            "probabilities": {
+              "keep": 0.2043,
+              "heat": 0.5047,
+              "cool": 0.2911
+            },
+            "confidence": 0.0635,
+            "answer_confidence": 0.5047,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          }
+        },
+        "usage": {
+          "input_tokens": 656,
+          "output_tokens": 0,
+          "state_tokens": 18,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "english",
+          "repo": "convaiinnovations/laya",
+          "reason": "explicit model='english'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "mixed",
+      "model": "english",
+      "command": "Turn the light off. Turn the TV on and open YouTube. Leave the AC and strips unchanged.",
+      "expected": {
+        "light_power": "off",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "on",
+        "tv_app": "youtube",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "off",
+        "light_mode": "normal",
+        "strip_power": "off",
+        "strip_mood": "relax",
+        "tv_power": "on",
+        "tv_app": "keep",
+        "ac_power": "on",
+        "ac_mode": "heat"
+      },
+      "errors": {
+        "light_mode": {
+          "expected": "keep",
+          "actual": "normal",
+          "answer_confidence": 0.3805
+        },
+        "strip_power": {
+          "expected": "keep",
+          "actual": "off",
+          "answer_confidence": 0.3848
+        },
+        "strip_mood": {
+          "expected": "keep",
+          "actual": "relax",
+          "answer_confidence": 0.4652
+        },
+        "tv_app": {
+          "expected": "youtube",
+          "actual": "keep",
+          "answer_confidence": 0.6756
+        },
+        "ac_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.517
+        },
+        "ac_mode": {
+          "expected": "keep",
+          "actual": "heat",
+          "answer_confidence": 0.4365
+        }
+      },
+      "elapsed_ms": 8923.5,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "off",
+            "probabilities": {
+              "keep": 0.0524,
+              "on": 0.3162,
+              "off": 0.6313
+            },
+            "confidence": 0.2636,
+            "answer_confidence": 0.6313,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "normal",
+            "probabilities": {
+              "keep": 0.321,
+              "night": 0.2985,
+              "normal": 0.3805
+            },
+            "confidence": 0.0048,
+            "answer_confidence": 0.3805,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "off",
+            "probabilities": {
+              "keep": 0.327,
+              "on": 0.2883,
+              "off": 0.3848
+            },
+            "confidence": 0.0064,
+            "answer_confidence": 0.3848,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "relax",
+            "probabilities": {
+              "keep": 0.1966,
+              "relax": 0.4652,
+              "focus": 0.1233,
+              "party": 0.0593,
+              "movie": 0.1556
+            },
+            "confidence": 0.1358,
+            "answer_confidence": 0.4652,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.2875,
+              "on": 0.5714,
+              "off": 0.141
+            },
+            "confidence": 0.1313,
+            "answer_confidence": 0.5714,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.6756,
+              "youtube": 0.1963,
+              "netflix": 0.0667,
+              "prime": 0.0614
+            },
+            "confidence": 0.3244,
+            "answer_confidence": 0.6756,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.2503,
+              "on": 0.517,
+              "off": 0.2327
+            },
+            "confidence": 0.0652,
+            "answer_confidence": 0.517,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "heat",
+            "probabilities": {
+              "keep": 0.2996,
+              "heat": 0.4365,
+              "cool": 0.2639
+            },
+            "confidence": 0.0219,
+            "answer_confidence": 0.4365,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          }
+        },
+        "usage": {
+          "input_tokens": 672,
+          "output_tokens": 0,
+          "state_tokens": 20,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "english",
+          "repo": "convaiinnovations/laya",
+          "reason": "explicit model='english'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "mode_only",
+      "model": "english",
+      "command": "Set the light to normal mode. Leave its power switch unchanged.",
+      "expected": {
+        "light_power": "keep",
+        "light_mode": "normal",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "on",
+        "light_mode": "keep",
+        "strip_power": "off",
+        "strip_mood": "relax",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "on",
+        "ac_mode": "keep"
+      },
+      "errors": {
+        "light_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.3847
+        },
+        "light_mode": {
+          "expected": "normal",
+          "actual": "keep",
+          "answer_confidence": 0.4734
+        },
+        "strip_power": {
+          "expected": "keep",
+          "actual": "off",
+          "answer_confidence": 0.3824
+        },
+        "strip_mood": {
+          "expected": "keep",
+          "actual": "relax",
+          "answer_confidence": 0.3138
+        },
+        "ac_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.3866
+        }
+      },
+      "elapsed_ms": 7243.0,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.3351,
+              "on": 0.3847,
+              "off": 0.2802
+            },
+            "confidence": 0.0075,
+            "answer_confidence": 0.3847,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.4734,
+              "night": 0.0721,
+              "normal": 0.4545
+            },
+            "confidence": 0.1789,
+            "answer_confidence": 0.4734,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "off",
+            "probabilities": {
+              "keep": 0.2905,
+              "on": 0.3271,
+              "off": 0.3824
+            },
+            "confidence": 0.0058,
+            "answer_confidence": 0.3824,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "relax",
+            "probabilities": {
+              "keep": 0.2954,
+              "relax": 0.3138,
+              "focus": 0.1593,
+              "party": 0.1021,
+              "movie": 0.1294
+            },
+            "confidence": 0.0592,
+            "answer_confidence": 0.3138,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.431,
+              "on": 0.3518,
+              "off": 0.2173
+            },
+            "confidence": 0.0333,
+            "answer_confidence": 0.431,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.8211,
+              "youtube": 0.0606,
+              "netflix": 0.0707,
+              "prime": 0.0477
+            },
+            "confidence": 0.521,
+            "answer_confidence": 0.8211,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.3742,
+              "on": 0.3866,
+              "off": 0.2392
+            },
+            "confidence": 0.0193,
+            "answer_confidence": 0.3866,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.6224,
+              "heat": 0.2551,
+              "cool": 0.1224
+            },
+            "confidence": 0.1801,
+            "answer_confidence": 0.6224,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          }
+        },
+        "usage": {
+          "input_tokens": 616,
+          "output_tokens": 0,
+          "state_tokens": 13,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "english",
+          "repo": "convaiinnovations/laya",
+          "reason": "explicit model='english'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "prime",
+      "model": "english",
+      "command": "Open Amazon Prime Video on the TV. Do not change any power switches.",
+      "expected": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "prime",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "relax",
+        "tv_power": "keep",
+        "tv_app": "prime",
+        "ac_power": "off",
+        "ac_mode": "heat"
+      },
+      "errors": {
+        "strip_mood": {
+          "expected": "keep",
+          "actual": "relax",
+          "answer_confidence": 0.3516
+        },
+        "ac_power": {
+          "expected": "keep",
+          "actual": "off",
+          "answer_confidence": 0.3527
+        },
+        "ac_mode": {
+          "expected": "keep",
+          "actual": "heat",
+          "answer_confidence": 0.4287
+        }
+      },
+      "elapsed_ms": 7104.8,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.4275,
+              "on": 0.3923,
+              "off": 0.1801
+            },
+            "confidence": 0.0541,
+            "answer_confidence": 0.4275,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.3631,
+              "night": 0.3006,
+              "normal": 0.3363
+            },
+            "confidence": 0.0027,
+            "answer_confidence": 0.3631,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.5995,
+              "on": 0.1817,
+              "off": 0.2188
+            },
+            "confidence": 0.1361,
+            "answer_confidence": 0.5995,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "relax",
+            "probabilities": {
+              "keep": 0.1709,
+              "relax": 0.3516,
+              "focus": 0.1287,
+              "party": 0.0569,
+              "movie": 0.2919
+            },
+            "confidence": 0.0955,
+            "answer_confidence": 0.3516,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.8257,
+              "on": 0.1246,
+              "off": 0.0497
+            },
+            "confidence": 0.4841,
+            "answer_confidence": 0.8257,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "prime",
+            "probabilities": {
+              "keep": 0.2963,
+              "youtube": 0.0618,
+              "netflix": 0.0589,
+              "prime": 0.5831
+            },
+            "confidence": 0.2687,
+            "answer_confidence": 0.5831,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "off",
+            "probabilities": {
+              "keep": 0.3521,
+              "on": 0.2953,
+              "off": 0.3527
+            },
+            "confidence": 0.003,
+            "answer_confidence": 0.3527,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "heat",
+            "probabilities": {
+              "keep": 0.4123,
+              "heat": 0.4287,
+              "cool": 0.159
+            },
+            "confidence": 0.0709,
+            "answer_confidence": 0.4287,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          }
+        },
+        "usage": {
+          "input_tokens": 632,
+          "output_tokens": 0,
+          "state_tokens": 15,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "english",
+          "repo": "convaiinnovations/laya",
+          "reason": "explicit model='english'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "negated_ac",
+      "model": "english",
+      "command": "Do not turn on the AC. Leave all devices unchanged.",
+      "expected": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "on",
+        "light_mode": "normal",
+        "strip_power": "on",
+        "strip_mood": "relax",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "off",
+        "ac_mode": "heat"
+      },
+      "errors": {
+        "light_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.4064
+        },
+        "light_mode": {
+          "expected": "keep",
+          "actual": "normal",
+          "answer_confidence": 0.3868
+        },
+        "strip_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.4307
+        },
+        "strip_mood": {
+          "expected": "keep",
+          "actual": "relax",
+          "answer_confidence": 0.4391
+        },
+        "ac_power": {
+          "expected": "keep",
+          "actual": "off",
+          "answer_confidence": 0.3869
+        },
+        "ac_mode": {
+          "expected": "keep",
+          "actual": "heat",
+          "answer_confidence": 0.3911
+        }
+      },
+      "elapsed_ms": 7074.9,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.3355,
+              "on": 0.4064,
+              "off": 0.258
+            },
+            "confidence": 0.0152,
+            "answer_confidence": 0.4064,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "normal",
+            "probabilities": {
+              "keep": 0.3691,
+              "night": 0.2441,
+              "normal": 0.3868
+            },
+            "confidence": 0.0174,
+            "answer_confidence": 0.3868,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.4041,
+              "on": 0.4307,
+              "off": 0.1652
+            },
+            "confidence": 0.0657,
+            "answer_confidence": 0.4307,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "relax",
+            "probabilities": {
+              "keep": 0.3514,
+              "relax": 0.4391,
+              "focus": 0.0834,
+              "party": 0.0555,
+              "movie": 0.0706
+            },
+            "confidence": 0.2024,
+            "answer_confidence": 0.4391,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.4883,
+              "on": 0.3303,
+              "off": 0.1813
+            },
+            "confidence": 0.0665,
+            "answer_confidence": 0.4883,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.6963,
+              "youtube": 0.0984,
+              "netflix": 0.1131,
+              "prime": 0.0923
+            },
+            "confidence": 0.3173,
+            "answer_confidence": 0.6963,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "off",
+            "probabilities": {
+              "keep": 0.3473,
+              "on": 0.2657,
+              "off": 0.3869
+            },
+            "confidence": 0.0107,
+            "answer_confidence": 0.3869,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "heat",
+            "probabilities": {
+              "keep": 0.2957,
+              "heat": 0.3911,
+              "cool": 0.3132
+            },
+            "confidence": 0.0069,
+            "answer_confidence": 0.3911,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          }
+        },
+        "usage": {
+          "input_tokens": 608,
+          "output_tokens": 0,
+          "state_tokens": 12,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "english",
+          "repo": "convaiinnovations/laya",
+          "reason": "explicit model='english'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "negated_light",
+      "model": "english",
+      "command": "Do not turn the light on. Leave everything as it is.",
+      "expected": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "off",
+        "light_mode": "normal",
+        "strip_power": "off",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "on",
+        "ac_mode": "keep"
+      },
+      "errors": {
+        "light_power": {
+          "expected": "keep",
+          "actual": "off",
+          "answer_confidence": 0.408
+        },
+        "light_mode": {
+          "expected": "keep",
+          "actual": "normal",
+          "answer_confidence": 0.4466
+        },
+        "strip_power": {
+          "expected": "keep",
+          "actual": "off",
+          "answer_confidence": 0.4369
+        },
+        "ac_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.392
+        }
+      },
+      "elapsed_ms": 7039.3,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "off",
+            "probabilities": {
+              "keep": 0.4053,
+              "on": 0.1868,
+              "off": 0.408
+            },
+            "confidence": 0.0486,
+            "answer_confidence": 0.408,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "normal",
+            "probabilities": {
+              "keep": 0.3298,
+              "night": 0.2236,
+              "normal": 0.4466
+            },
+            "confidence": 0.0344,
+            "answer_confidence": 0.4466,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "off",
+            "probabilities": {
+              "keep": 0.2591,
+              "on": 0.304,
+              "off": 0.4369
+            },
+            "confidence": 0.0227,
+            "answer_confidence": 0.4369,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.5069,
+              "relax": 0.2379,
+              "focus": 0.0919,
+              "party": 0.0548,
+              "movie": 0.1085
+            },
+            "confidence": 0.1888,
+            "answer_confidence": 0.5069,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.4563,
+              "on": 0.2713,
+              "off": 0.2724
+            },
+            "confidence": 0.0295,
+            "answer_confidence": 0.4563,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.9401,
+              "youtube": 0.0179,
+              "netflix": 0.0244,
+              "prime": 0.0176
+            },
+            "confidence": 0.7896,
+            "answer_confidence": 0.9401,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.2946,
+              "on": 0.392,
+              "off": 0.3133
+            },
+            "confidence": 0.0071,
+            "answer_confidence": 0.392,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.6401,
+              "heat": 0.2409,
+              "cool": 0.119
+            },
+            "confidence": 0.1974,
+            "answer_confidence": 0.6401,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          }
+        },
+        "usage": {
+          "input_tokens": 616,
+          "output_tokens": 0,
+          "state_tokens": 13,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "english",
+          "repo": "convaiinnovations/laya",
+          "reason": "explicit model='english'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "greeting",
+      "model": "english",
+      "command": "Hello! How are you today?",
+      "expected": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "on",
+        "light_mode": "keep",
+        "strip_power": "on",
+        "strip_mood": "relax",
+        "tv_power": "on",
+        "tv_app": "keep",
+        "ac_power": "on",
+        "ac_mode": "keep"
+      },
+      "errors": {
+        "light_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.6993
+        },
+        "strip_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.6612
+        },
+        "strip_mood": {
+          "expected": "keep",
+          "actual": "relax",
+          "answer_confidence": 0.6673
+        },
+        "tv_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.5465
+        },
+        "ac_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.5181
+        }
+      },
+      "elapsed_ms": 6468.8,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.2253,
+              "on": 0.6993,
+              "off": 0.0754
+            },
+            "confidence": 0.2893,
+            "answer_confidence": 0.6993,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.4591,
+              "night": 0.1488,
+              "normal": 0.3921
+            },
+            "confidence": 0.0825,
+            "answer_confidence": 0.4591,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.2444,
+              "on": 0.6612,
+              "off": 0.0944
+            },
+            "confidence": 0.2348,
+            "answer_confidence": 0.6612,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "relax",
+            "probabilities": {
+              "keep": 0.1686,
+              "relax": 0.6673,
+              "focus": 0.0439,
+              "party": 0.0782,
+              "movie": 0.042
+            },
+            "confidence": 0.354,
+            "answer_confidence": 0.6673,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.3908,
+              "on": 0.5465,
+              "off": 0.0627
+            },
+            "confidence": 0.2071,
+            "answer_confidence": 0.5465,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.6725,
+              "youtube": 0.1453,
+              "netflix": 0.0983,
+              "prime": 0.0839
+            },
+            "confidence": 0.2909,
+            "answer_confidence": 0.6725,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.3495,
+              "on": 0.5181,
+              "off": 0.1325
+            },
+            "confidence": 0.1117,
+            "answer_confidence": 0.5181,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.4785,
+              "heat": 0.2405,
+              "cool": 0.281
+            },
+            "confidence": 0.0423,
+            "answer_confidence": 0.4785,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          }
+        },
+        "usage": {
+          "input_tokens": 568,
+          "output_tokens": 0,
+          "state_tokens": 7,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "english",
+          "repo": "convaiinnovations/laya",
+          "reason": "explicit model='english'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "unsupported",
+      "model": "english",
+      "command": "Unlock the front door.",
+      "expected": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "off",
+        "light_mode": "normal",
+        "strip_power": "on",
+        "strip_mood": "keep",
+        "tv_power": "on",
+        "tv_app": "keep",
+        "ac_power": "on",
+        "ac_mode": "keep"
+      },
+      "errors": {
+        "light_power": {
+          "expected": "keep",
+          "actual": "off",
+          "answer_confidence": 0.4435
+        },
+        "light_mode": {
+          "expected": "keep",
+          "actual": "normal",
+          "answer_confidence": 0.3926
+        },
+        "strip_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.5117
+        },
+        "tv_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.4129
+        },
+        "ac_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.4661
+        }
+      },
+      "elapsed_ms": 6357.1,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "off",
+            "probabilities": {
+              "keep": 0.1408,
+              "on": 0.4157,
+              "off": 0.4435
+            },
+            "confidence": 0.0884,
+            "answer_confidence": 0.4435,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "normal",
+            "probabilities": {
+              "keep": 0.2205,
+              "night": 0.3869,
+              "normal": 0.3926
+            },
+            "confidence": 0.028,
+            "answer_confidence": 0.3926,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.2391,
+              "on": 0.5117,
+              "off": 0.2492
+            },
+            "confidence": 0.0613,
+            "answer_confidence": 0.5117,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.3582,
+              "relax": 0.2705,
+              "focus": 0.1185,
+              "party": 0.1525,
+              "movie": 0.1003
+            },
+            "confidence": 0.0732,
+            "answer_confidence": 0.3582,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.2815,
+              "on": 0.4129,
+              "off": 0.3056
+            },
+            "confidence": 0.013,
+            "answer_confidence": 0.4129,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.3251,
+              "youtube": 0.3066,
+              "netflix": 0.2249,
+              "prime": 0.1433
+            },
+            "confidence": 0.0321,
+            "answer_confidence": 0.3251,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.2105,
+              "on": 0.4661,
+              "off": 0.3234
+            },
+            "confidence": 0.0452,
+            "answer_confidence": 0.4661,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.4157,
+              "heat": 0.4073,
+              "cool": 0.1769
+            },
+            "confidence": 0.0559,
+            "answer_confidence": 0.4157,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          }
+        },
+        "usage": {
+          "input_tokens": 552,
+          "output_tokens": 0,
+          "state_tokens": 5,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "english",
+          "repo": "convaiinnovations/laya",
+          "reason": "explicit model='english'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "ambiguous",
+      "model": "english",
+      "command": "Turn it on.",
+      "expected": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "on",
+        "light_mode": "normal",
+        "strip_power": "on",
+        "strip_mood": "relax",
+        "tv_power": "on",
+        "tv_app": "keep",
+        "ac_power": "on",
+        "ac_mode": "heat"
+      },
+      "errors": {
+        "light_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.7307
+        },
+        "light_mode": {
+          "expected": "keep",
+          "actual": "normal",
+          "answer_confidence": 0.375
+        },
+        "strip_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.8152
+        },
+        "strip_mood": {
+          "expected": "keep",
+          "actual": "relax",
+          "answer_confidence": 0.4048
+        },
+        "tv_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.8734
+        },
+        "ac_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.8511
+        },
+        "ac_mode": {
+          "expected": "keep",
+          "actual": "heat",
+          "answer_confidence": 0.6219
+        }
+      },
+      "elapsed_ms": 6229.5,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.1559,
+              "on": 0.7307,
+              "off": 0.1135
+            },
+            "confidence": 0.3028,
+            "answer_confidence": 0.7307,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "normal",
+            "probabilities": {
+              "keep": 0.3712,
+              "night": 0.2538,
+              "normal": 0.375
+            },
+            "confidence": 0.0136,
+            "answer_confidence": 0.375,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.1309,
+              "on": 0.8152,
+              "off": 0.054
+            },
+            "confidence": 0.4627,
+            "answer_confidence": 0.8152,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "relax",
+            "probabilities": {
+              "keep": 0.2143,
+              "relax": 0.4048,
+              "focus": 0.1135,
+              "party": 0.0918,
+              "movie": 0.1755
+            },
+            "confidence": 0.088,
+            "answer_confidence": 0.4048,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0905,
+              "on": 0.8734,
+              "off": 0.0361
+            },
+            "confidence": 0.5852,
+            "answer_confidence": 0.8734,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.3304,
+              "youtube": 0.2438,
+              "netflix": 0.2498,
+              "prime": 0.176
+            },
+            "confidence": 0.0174,
+            "answer_confidence": 0.3304,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.1022,
+              "on": 0.8511,
+              "off": 0.0467
+            },
+            "confidence": 0.5328,
+            "answer_confidence": 0.8511,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "heat",
+            "probabilities": {
+              "keep": 0.182,
+              "heat": 0.6219,
+              "cool": 0.196
+            },
+            "confidence": 0.1581,
+            "answer_confidence": 0.6219,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          }
+        },
+        "usage": {
+          "input_tokens": 544,
+          "output_tokens": 0,
+          "state_tokens": 4,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "english",
+          "repo": "convaiinnovations/laya",
+          "reason": "explicit model='english'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "japanese",
+      "model": "english",
+      "command": "エアコンをつけて、暖房モードにしてください。",
+      "expected": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "on",
+        "ac_mode": "heat"
+      },
+      "actual": {
+        "light_power": "on",
+        "light_mode": "night",
+        "strip_power": "on",
+        "strip_mood": "relax",
+        "tv_power": "on",
+        "tv_app": "keep",
+        "ac_power": "on",
+        "ac_mode": "heat"
+      },
+      "errors": {
+        "light_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.7178
+        },
+        "light_mode": {
+          "expected": "keep",
+          "actual": "night",
+          "answer_confidence": 0.3941
+        },
+        "strip_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.6245
+        },
+        "strip_mood": {
+          "expected": "keep",
+          "actual": "relax",
+          "answer_confidence": 0.527
+        },
+        "tv_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.4704
+        }
+      },
+      "elapsed_ms": 7857.6,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.134,
+              "on": 0.7178,
+              "off": 0.1482
+            },
+            "confidence": 0.2806,
+            "answer_confidence": 0.7178,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "night",
+            "probabilities": {
+              "keep": 0.2527,
+              "night": 0.3941,
+              "normal": 0.3532
+            },
+            "confidence": 0.015,
+            "answer_confidence": 0.3941,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.1754,
+              "on": 0.6245,
+              "off": 0.2001
+            },
+            "confidence": 0.1614,
+            "answer_confidence": 0.6245,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "relax",
+            "probabilities": {
+              "keep": 0.1598,
+              "relax": 0.527,
+              "focus": 0.0845,
+              "party": 0.0716,
+              "movie": 0.1571
+            },
+            "confidence": 0.1805,
+            "answer_confidence": 0.527,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.2964,
+              "on": 0.4704,
+              "off": 0.2331
+            },
+            "confidence": 0.04,
+            "answer_confidence": 0.4704,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.5071,
+              "youtube": 0.167,
+              "netflix": 0.1723,
+              "prime": 0.1535
+            },
+            "confidence": 0.1099,
+            "answer_confidence": 0.5071,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.216,
+              "on": 0.4921,
+              "off": 0.292
+            },
+            "confidence": 0.0539,
+            "answer_confidence": 0.4921,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "heat",
+            "probabilities": {
+              "keep": 0.2787,
+              "heat": 0.4508,
+              "cool": 0.2704
+            },
+            "confidence": 0.027,
+            "answer_confidence": 0.4508,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          }
+        },
+        "usage": {
+          "input_tokens": 696,
+          "output_tokens": 0,
+          "state_tokens": 23,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "english",
+          "repo": "convaiinnovations/laya",
+          "reason": "explicit model='english'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "romanized_nepali",
+      "model": "english",
+      "command": "batti on gara ani night mode ma rakha",
+      "expected": {
+        "light_power": "on",
+        "light_mode": "night",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "on",
+        "light_mode": "night",
+        "strip_power": "on",
+        "strip_mood": "relax",
+        "tv_power": "on",
+        "tv_app": "keep",
+        "ac_power": "on",
+        "ac_mode": "heat"
+      },
+      "errors": {
+        "strip_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.7674
+        },
+        "strip_mood": {
+          "expected": "keep",
+          "actual": "relax",
+          "answer_confidence": 0.3593
+        },
+        "tv_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.5959
+        },
+        "ac_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.7293
+        },
+        "ac_mode": {
+          "expected": "keep",
+          "actual": "heat",
+          "answer_confidence": 0.3535
+        }
+      },
+      "elapsed_ms": 8461.1,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.1162,
+              "on": 0.8119,
+              "off": 0.0719
+            },
+            "confidence": 0.446,
+            "answer_confidence": 0.8119,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "night",
+            "probabilities": {
+              "keep": 0.1431,
+              "night": 0.7184,
+              "normal": 0.1385
+            },
+            "confidence": 0.2812,
+            "answer_confidence": 0.7184,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.1048,
+              "on": 0.7674,
+              "off": 0.1278
+            },
+            "confidence": 0.3606,
+            "answer_confidence": 0.7674,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "relax",
+            "probabilities": {
+              "keep": 0.1813,
+              "relax": 0.3593,
+              "focus": 0.0783,
+              "party": 0.1816,
+              "movie": 0.1994
+            },
+            "confidence": 0.0629,
+            "answer_confidence": 0.3593,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.2373,
+              "on": 0.5959,
+              "off": 0.1668
+            },
+            "confidence": 0.1366,
+            "answer_confidence": 0.5959,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.4376,
+              "youtube": 0.2456,
+              "netflix": 0.193,
+              "prime": 0.1238
+            },
+            "confidence": 0.0748,
+            "answer_confidence": 0.4376,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.1542,
+              "on": 0.7293,
+              "off": 0.1165
+            },
+            "confidence": 0.3,
+            "answer_confidence": 0.7293,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "heat",
+            "probabilities": {
+              "keep": 0.3155,
+              "heat": 0.3535,
+              "cool": 0.331
+            },
+            "confidence": 0.001,
+            "answer_confidence": 0.3535,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          }
+        },
+        "usage": {
+          "input_tokens": 616,
+          "output_tokens": 0,
+          "state_tokens": 13,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "english",
+          "repo": "convaiinnovations/laya",
+          "reason": "explicit model='english'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "light_night",
+      "model": "multilingual",
+      "command": "Turn the light on and set it to night mode.",
+      "expected": {
+        "light_power": "on",
+        "light_mode": "night",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "on",
+        "light_mode": "night",
+        "strip_power": "on",
+        "strip_mood": "relax",
+        "tv_power": "on",
+        "tv_app": "keep",
+        "ac_power": "on",
+        "ac_mode": "keep"
+      },
+      "errors": {
+        "strip_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.9996
+        },
+        "strip_mood": {
+          "expected": "keep",
+          "actual": "relax",
+          "answer_confidence": 0.8897
+        },
+        "tv_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.9385
+        },
+        "ac_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.9816
+        }
+      },
+      "elapsed_ms": 2026.5,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0001,
+              "on": 0.9999,
+              "off": 0.0001
+            },
+            "confidence": 0.9987,
+            "answer_confidence": 0.9999,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "night",
+            "probabilities": {
+              "keep": 0.0206,
+              "night": 0.881,
+              "normal": 0.0985
+            },
+            "confidence": 0.618,
+            "answer_confidence": 0.881,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0001,
+              "on": 0.9996,
+              "off": 0.0002
+            },
+            "confidence": 0.9967,
+            "answer_confidence": 0.9996,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "relax",
+            "probabilities": {
+              "keep": 0.0907,
+              "relax": 0.8897,
+              "focus": 0.0053,
+              "party": 0.0054,
+              "movie": 0.0089
+            },
+            "confidence": 0.7392,
+            "answer_confidence": 0.8897,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0112,
+              "on": 0.9385,
+              "off": 0.0503
+            },
+            "confidence": 0.763,
+            "answer_confidence": 0.9385,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.6657,
+              "youtube": 0.0256,
+              "netflix": 0.0662,
+              "prime": 0.2425
+            },
+            "confidence": 0.3594,
+            "answer_confidence": 0.6657,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0077,
+              "on": 0.9816,
+              "off": 0.0107
+            },
+            "confidence": 0.9051,
+            "answer_confidence": 0.9816,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.5259,
+              "heat": 0.0467,
+              "cool": 0.4274
+            },
+            "confidence": 0.2314,
+            "answer_confidence": 0.5259,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          }
+        },
+        "usage": {
+          "input_tokens": 580,
+          "output_tokens": 0,
+          "state_tokens": 11,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "multilingual",
+          "repo": "convaiinnovations/laya/multilingual",
+          "reason": "explicit model='multilingual'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "strips_party",
+      "model": "multilingual",
+      "command": "Turn on the Hyperion LED strips and set their mood to party.",
+      "expected": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "on",
+        "strip_mood": "party",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "on",
+        "light_mode": "night",
+        "strip_power": "on",
+        "strip_mood": "party",
+        "tv_power": "on",
+        "tv_app": "prime",
+        "ac_power": "on",
+        "ac_mode": "cool"
+      },
+      "errors": {
+        "light_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.9019
+        },
+        "light_mode": {
+          "expected": "keep",
+          "actual": "night",
+          "answer_confidence": 0.7282
+        },
+        "tv_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.9608
+        },
+        "tv_app": {
+          "expected": "keep",
+          "actual": "prime",
+          "answer_confidence": 0.4498
+        },
+        "ac_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.8969
+        },
+        "ac_mode": {
+          "expected": "keep",
+          "actual": "cool",
+          "answer_confidence": 0.6122
+        }
+      },
+      "elapsed_ms": 2231.2,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0266,
+              "on": 0.9019,
+              "off": 0.0715
+            },
+            "confidence": 0.6557,
+            "answer_confidence": 0.9019,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "night",
+            "probabilities": {
+              "keep": 0.0806,
+              "night": 0.7282,
+              "normal": 0.1912
+            },
+            "confidence": 0.3171,
+            "answer_confidence": 0.7282,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0002,
+              "on": 0.9997,
+              "off": 0.0001
+            },
+            "confidence": 0.997,
+            "answer_confidence": 0.9997,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "party",
+            "probabilities": {
+              "keep": 0.0004,
+              "relax": 0.0013,
+              "focus": 0.0004,
+              "party": 0.9975,
+              "movie": 0.0004
+            },
+            "confidence": 0.987,
+            "answer_confidence": 0.9975,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0152,
+              "on": 0.9608,
+              "off": 0.024
+            },
+            "confidence": 0.8255,
+            "answer_confidence": 0.9608,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "prime",
+            "probabilities": {
+              "keep": 0.1136,
+              "youtube": 0.1692,
+              "netflix": 0.2674,
+              "prime": 0.4498
+            },
+            "confidence": 0.0913,
+            "answer_confidence": 0.4498,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0361,
+              "on": 0.8969,
+              "off": 0.067
+            },
+            "confidence": 0.6371,
+            "answer_confidence": 0.8969,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "cool",
+            "probabilities": {
+              "keep": 0.2995,
+              "heat": 0.0882,
+              "cool": 0.6122
+            },
+            "confidence": 0.2029,
+            "answer_confidence": 0.6122,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          }
+        },
+        "usage": {
+          "input_tokens": 596,
+          "output_tokens": 0,
+          "state_tokens": 13,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "multilingual",
+          "repo": "convaiinnovations/laya/multilingual",
+          "reason": "explicit model='multilingual'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "tv_netflix",
+      "model": "multilingual",
+      "command": "Turn on the Android TV and open Netflix.",
+      "expected": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "on",
+        "tv_app": "netflix",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "on",
+        "light_mode": "night",
+        "strip_power": "on",
+        "strip_mood": "relax",
+        "tv_power": "on",
+        "tv_app": "netflix",
+        "ac_power": "on",
+        "ac_mode": "cool"
+      },
+      "errors": {
+        "light_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.9874
+        },
+        "light_mode": {
+          "expected": "keep",
+          "actual": "night",
+          "answer_confidence": 0.6391
+        },
+        "strip_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.9901
+        },
+        "strip_mood": {
+          "expected": "keep",
+          "actual": "relax",
+          "answer_confidence": 0.9542
+        },
+        "ac_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.9904
+        },
+        "ac_mode": {
+          "expected": "keep",
+          "actual": "cool",
+          "answer_confidence": 0.5373
+        }
+      },
+      "elapsed_ms": 2157.9,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0045,
+              "on": 0.9874,
+              "off": 0.0081
+            },
+            "confidence": 0.931,
+            "answer_confidence": 0.9874,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "night",
+            "probabilities": {
+              "keep": 0.1263,
+              "night": 0.6391,
+              "normal": 0.2346
+            },
+            "confidence": 0.1921,
+            "answer_confidence": 0.6391,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0054,
+              "on": 0.9901,
+              "off": 0.0046
+            },
+            "confidence": 0.9431,
+            "answer_confidence": 0.9901,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "relax",
+            "probabilities": {
+              "keep": 0.0119,
+              "relax": 0.9542,
+              "focus": 0.0063,
+              "party": 0.0112,
+              "movie": 0.0164
+            },
+            "confidence": 0.8464,
+            "answer_confidence": 0.9542,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0135,
+              "on": 0.9647,
+              "off": 0.0218
+            },
+            "confidence": 0.8396,
+            "answer_confidence": 0.9647,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "netflix",
+            "probabilities": {
+              "keep": 0.0001,
+              "youtube": 0.0001,
+              "netflix": 0.9997,
+              "prime": 0.0001
+            },
+            "confidence": 0.9975,
+            "answer_confidence": 0.9997,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0018,
+              "on": 0.9904,
+              "off": 0.0079
+            },
+            "confidence": 0.9465,
+            "answer_confidence": 0.9904,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "cool",
+            "probabilities": {
+              "keep": 0.3662,
+              "heat": 0.0965,
+              "cool": 0.5373
+            },
+            "confidence": 0.156,
+            "answer_confidence": 0.5373,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          }
+        },
+        "usage": {
+          "input_tokens": 564,
+          "output_tokens": 0,
+          "state_tokens": 9,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "multilingual",
+          "repo": "convaiinnovations/laya/multilingual",
+          "reason": "explicit model='multilingual'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "ac_cool",
+      "model": "multilingual",
+      "command": "Turn the AC on and set it to cool mode.",
+      "expected": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "on",
+        "ac_mode": "cool"
+      },
+      "actual": {
+        "light_power": "on",
+        "light_mode": "normal",
+        "strip_power": "on",
+        "strip_mood": "relax",
+        "tv_power": "on",
+        "tv_app": "keep",
+        "ac_power": "on",
+        "ac_mode": "cool"
+      },
+      "errors": {
+        "light_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.8906
+        },
+        "light_mode": {
+          "expected": "keep",
+          "actual": "normal",
+          "answer_confidence": 0.395
+        },
+        "strip_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.9463
+        },
+        "strip_mood": {
+          "expected": "keep",
+          "actual": "relax",
+          "answer_confidence": 0.9771
+        },
+        "tv_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.8956
+        }
+      },
+      "elapsed_ms": 2313.2,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.05,
+              "on": 0.8906,
+              "off": 0.0593
+            },
+            "confidence": 0.6171,
+            "answer_confidence": 0.8906,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "normal",
+            "probabilities": {
+              "keep": 0.2465,
+              "night": 0.3586,
+              "normal": 0.395
+            },
+            "confidence": 0.0171,
+            "answer_confidence": 0.395,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0319,
+              "on": 0.9463,
+              "off": 0.0218
+            },
+            "confidence": 0.7765,
+            "answer_confidence": 0.9463,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "relax",
+            "probabilities": {
+              "keep": 0.0153,
+              "relax": 0.9771,
+              "focus": 0.0032,
+              "party": 0.0022,
+              "movie": 0.0022
+            },
+            "confidence": 0.918,
+            "answer_confidence": 0.9771,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0419,
+              "on": 0.8956,
+              "off": 0.0624
+            },
+            "confidence": 0.6314,
+            "answer_confidence": 0.8956,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.9538,
+              "youtube": 0.0064,
+              "netflix": 0.0108,
+              "prime": 0.029
+            },
+            "confidence": 0.8348,
+            "answer_confidence": 0.9538,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0473,
+              "on": 0.8774,
+              "off": 0.0753
+            },
+            "confidence": 0.5868,
+            "answer_confidence": 0.8774,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "cool",
+            "probabilities": {
+              "keep": 0.0676,
+              "heat": 0.0401,
+              "cool": 0.8923
+            },
+            "confidence": 0.6243,
+            "answer_confidence": 0.8923,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 580,
+          "output_tokens": 0,
+          "state_tokens": 11,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "multilingual",
+          "repo": "convaiinnovations/laya/multilingual",
+          "reason": "explicit model='multilingual'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "all_off",
+      "model": "multilingual",
+      "command": "Turn off the light, the Hyperion LED strips, the Android TV and the AC.",
+      "expected": {
+        "light_power": "off",
+        "light_mode": "keep",
+        "strip_power": "off",
+        "strip_mood": "keep",
+        "tv_power": "off",
+        "tv_app": "keep",
+        "ac_power": "off",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "on",
+        "light_mode": "night",
+        "strip_power": "off",
+        "strip_mood": "relax",
+        "tv_power": "off",
+        "tv_app": "keep",
+        "ac_power": "off",
+        "ac_mode": "keep"
+      },
+      "errors": {
+        "light_power": {
+          "expected": "off",
+          "actual": "on",
+          "answer_confidence": 0.5363
+        },
+        "light_mode": {
+          "expected": "keep",
+          "actual": "night",
+          "answer_confidence": 0.6816
+        },
+        "strip_mood": {
+          "expected": "keep",
+          "actual": "relax",
+          "answer_confidence": 0.9728
+        }
+      },
+      "elapsed_ms": 2459.5,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0454,
+              "on": 0.5363,
+              "off": 0.4183
+            },
+            "confidence": 0.2361,
+            "answer_confidence": 0.5363,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "night",
+            "probabilities": {
+              "keep": 0.1403,
+              "night": 0.6816,
+              "normal": 0.1781
+            },
+            "confidence": 0.2316,
+            "answer_confidence": 0.6816,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "off",
+            "probabilities": {
+              "keep": 0.0461,
+              "on": 0.3131,
+              "off": 0.6407
+            },
+            "confidence": 0.2802,
+            "answer_confidence": 0.6407,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "relax",
+            "probabilities": {
+              "keep": 0.0171,
+              "relax": 0.9728,
+              "focus": 0.0034,
+              "party": 0.0034,
+              "movie": 0.0034
+            },
+            "confidence": 0.9042,
+            "answer_confidence": 0.9728,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "off",
+            "probabilities": {
+              "keep": 0.0161,
+              "on": 0.3251,
+              "off": 0.6589
+            },
+            "confidence": 0.3569,
+            "answer_confidence": 0.6589,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.8514,
+              "youtube": 0.008,
+              "netflix": 0.0291,
+              "prime": 0.1115
+            },
+            "confidence": 0.6228,
+            "answer_confidence": 0.8514,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "off",
+            "probabilities": {
+              "keep": 0.0208,
+              "on": 0.269,
+              "off": 0.7101
+            },
+            "confidence": 0.3838,
+            "answer_confidence": 0.7101,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.5111,
+              "heat": 0.0385,
+              "cool": 0.4504
+            },
+            "confidence": 0.2466,
+            "answer_confidence": 0.5111,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          }
+        },
+        "usage": {
+          "input_tokens": 628,
+          "output_tokens": 0,
+          "state_tokens": 17,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "multilingual",
+          "repo": "convaiinnovations/laya/multilingual",
+          "reason": "explicit model='multilingual'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "mixed",
+      "model": "multilingual",
+      "command": "Turn the light off. Turn the TV on and open YouTube. Leave the AC and strips unchanged.",
+      "expected": {
+        "light_power": "off",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "on",
+        "tv_app": "youtube",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "errors": {
+        "light_power": {
+          "expected": "off",
+          "actual": "keep",
+          "answer_confidence": 0.9548
+        },
+        "tv_power": {
+          "expected": "on",
+          "actual": "keep",
+          "answer_confidence": 0.9488
+        },
+        "tv_app": {
+          "expected": "youtube",
+          "actual": "keep",
+          "answer_confidence": 0.9742
+        }
+      },
+      "elapsed_ms": 2692.0,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.9548,
+              "on": 0.0279,
+              "off": 0.0173
+            },
+            "confidence": 0.805,
+            "answer_confidence": 0.9548,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.7596,
+              "night": 0.0558,
+              "normal": 0.1846
+            },
+            "confidence": 0.3795,
+            "answer_confidence": 0.7596,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.9599,
+              "on": 0.0327,
+              "off": 0.0074
+            },
+            "confidence": 0.8292,
+            "answer_confidence": 0.9599,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.9887,
+              "relax": 0.0089,
+              "focus": 0.0008,
+              "party": 0.0008,
+              "movie": 0.0008
+            },
+            "confidence": 0.9565,
+            "answer_confidence": 0.9887,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.9488,
+              "on": 0.0319,
+              "off": 0.0192
+            },
+            "confidence": 0.7854,
+            "answer_confidence": 0.9488,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.9742,
+              "youtube": 0.0017,
+              "netflix": 0.0035,
+              "prime": 0.0206
+            },
+            "confidence": 0.9018,
+            "answer_confidence": 0.9742,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.759,
+              "on": 0.1448,
+              "off": 0.0962
+            },
+            "confidence": 0.3498,
+            "answer_confidence": 0.759,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.7389,
+              "heat": 0.0255,
+              "cool": 0.2356
+            },
+            "confidence": 0.4014,
+            "answer_confidence": 0.7389,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          }
+        },
+        "usage": {
+          "input_tokens": 652,
+          "output_tokens": 0,
+          "state_tokens": 20,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "multilingual",
+          "repo": "convaiinnovations/laya/multilingual",
+          "reason": "explicit model='multilingual'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "mode_only",
+      "model": "multilingual",
+      "command": "Set the light to normal mode. Leave its power switch unchanged.",
+      "expected": {
+        "light_power": "keep",
+        "light_mode": "normal",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "errors": {
+        "light_mode": {
+          "expected": "normal",
+          "actual": "keep",
+          "answer_confidence": 0.9114
+        }
+      },
+      "elapsed_ms": 2272.5,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.9584,
+              "on": 0.026,
+              "off": 0.0156
+            },
+            "confidence": 0.8175,
+            "answer_confidence": 0.9584,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.9114,
+              "night": 0.0094,
+              "normal": 0.0792
+            },
+            "confidence": 0.7002,
+            "answer_confidence": 0.9114,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.8974,
+              "on": 0.0583,
+              "off": 0.0443
+            },
+            "confidence": 0.635,
+            "answer_confidence": 0.8974,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.9436,
+              "relax": 0.0428,
+              "focus": 0.0037,
+              "party": 0.0039,
+              "movie": 0.0061
+            },
+            "confidence": 0.8367,
+            "answer_confidence": 0.9436,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.8717,
+              "on": 0.1161,
+              "off": 0.0121
+            },
+            "confidence": 0.6148,
+            "answer_confidence": 0.8717,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.9911,
+              "youtube": 0.001,
+              "netflix": 0.0024,
+              "prime": 0.0054
+            },
+            "confidence": 0.9576,
+            "answer_confidence": 0.9911,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.8836,
+              "on": 0.0956,
+              "off": 0.0208
+            },
+            "confidence": 0.6228,
+            "answer_confidence": 0.8836,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.9855,
+              "heat": 0.0051,
+              "cool": 0.0094
+            },
+            "confidence": 0.9224,
+            "answer_confidence": 0.9855,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 596,
+          "output_tokens": 0,
+          "state_tokens": 13,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "multilingual",
+          "repo": "convaiinnovations/laya/multilingual",
+          "reason": "explicit model='multilingual'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "prime",
+      "model": "multilingual",
+      "command": "Open Amazon Prime Video on the TV. Do not change any power switches.",
+      "expected": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "prime",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "errors": {
+        "tv_app": {
+          "expected": "prime",
+          "actual": "keep",
+          "answer_confidence": 0.9726
+        }
+      },
+      "elapsed_ms": 2411.9,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.6554,
+              "on": 0.2389,
+              "off": 0.1057
+            },
+            "confidence": 0.2204,
+            "answer_confidence": 0.6554,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.8468,
+              "night": 0.0513,
+              "normal": 0.1019
+            },
+            "confidence": 0.5213,
+            "answer_confidence": 0.8468,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.6015,
+              "on": 0.3726,
+              "off": 0.0258
+            },
+            "confidence": 0.301,
+            "answer_confidence": 0.6015,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.8964,
+              "relax": 0.0733,
+              "focus": 0.0099,
+              "party": 0.0093,
+              "movie": 0.0111
+            },
+            "confidence": 0.7337,
+            "answer_confidence": 0.8964,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.6064,
+              "on": 0.3386,
+              "off": 0.055
+            },
+            "confidence": 0.2449,
+            "answer_confidence": 0.6064,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.9726,
+              "youtube": 0.0049,
+              "netflix": 0.0127,
+              "prime": 0.0097
+            },
+            "confidence": 0.889,
+            "answer_confidence": 0.9726,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.612,
+              "on": 0.268,
+              "off": 0.12
+            },
+            "confidence": 0.1737,
+            "answer_confidence": 0.612,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.9741,
+              "heat": 0.0097,
+              "cool": 0.0162
+            },
+            "confidence": 0.875,
+            "answer_confidence": 0.9741,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 612,
+          "output_tokens": 0,
+          "state_tokens": 15,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "multilingual",
+          "repo": "convaiinnovations/laya/multilingual",
+          "reason": "explicit model='multilingual'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "negated_ac",
+      "model": "multilingual",
+      "command": "Do not turn on the AC. Leave all devices unchanged.",
+      "expected": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "errors": {},
+      "elapsed_ms": 2379.8,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.9096,
+              "on": 0.0387,
+              "off": 0.0517
+            },
+            "confidence": 0.6676,
+            "answer_confidence": 0.9096,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.971,
+              "night": 0.0049,
+              "normal": 0.0241
+            },
+            "confidence": 0.8684,
+            "answer_confidence": 0.971,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.8819,
+              "on": 0.062,
+              "off": 0.0561
+            },
+            "confidence": 0.5951,
+            "answer_confidence": 0.8819,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.9964,
+              "relax": 0.0027,
+              "focus": 0.0003,
+              "party": 0.0003,
+              "movie": 0.0003
+            },
+            "confidence": 0.9834,
+            "answer_confidence": 0.9964,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.8834,
+              "on": 0.0705,
+              "off": 0.0461
+            },
+            "confidence": 0.6011,
+            "answer_confidence": 0.8834,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.9984,
+              "youtube": 0.0003,
+              "netflix": 0.0008,
+              "prime": 0.0006
+            },
+            "confidence": 0.99,
+            "answer_confidence": 0.9984,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.8312,
+              "on": 0.0828,
+              "off": 0.086
+            },
+            "confidence": 0.4804,
+            "answer_confidence": 0.8312,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.9824,
+              "heat": 0.0044,
+              "cool": 0.0132
+            },
+            "confidence": 0.9104,
+            "answer_confidence": 0.9824,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 588,
+          "output_tokens": 0,
+          "state_tokens": 12,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "multilingual",
+          "repo": "convaiinnovations/laya/multilingual",
+          "reason": "explicit model='multilingual'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "negated_light",
+      "model": "multilingual",
+      "command": "Do not turn the light on. Leave everything as it is.",
+      "expected": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "off",
+        "light_mode": "keep",
+        "strip_power": "off",
+        "strip_mood": "keep",
+        "tv_power": "off",
+        "tv_app": "keep",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "errors": {
+        "light_power": {
+          "expected": "keep",
+          "actual": "off",
+          "answer_confidence": 0.7505
+        },
+        "strip_power": {
+          "expected": "keep",
+          "actual": "off",
+          "answer_confidence": 0.7095
+        },
+        "tv_power": {
+          "expected": "keep",
+          "actual": "off",
+          "answer_confidence": 0.5606
+        }
+      },
+      "elapsed_ms": 2871.5,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "off",
+            "probabilities": {
+              "keep": 0.2236,
+              "on": 0.0259,
+              "off": 0.7505
+            },
+            "confidence": 0.4129,
+            "answer_confidence": 0.7505,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.937,
+              "night": 0.028,
+              "normal": 0.035
+            },
+            "confidence": 0.7466,
+            "answer_confidence": 0.937,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "off",
+            "probabilities": {
+              "keep": 0.2207,
+              "on": 0.0698,
+              "off": 0.7095
+            },
+            "confidence": 0.3057,
+            "answer_confidence": 0.7095,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.6803,
+              "relax": 0.2962,
+              "focus": 0.0072,
+              "party": 0.0088,
+              "movie": 0.0075
+            },
+            "confidence": 0.5425,
+            "answer_confidence": 0.6803,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "off",
+            "probabilities": {
+              "keep": 0.3753,
+              "on": 0.0641,
+              "off": 0.5606
+            },
+            "confidence": 0.2096,
+            "answer_confidence": 0.5606,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.9849,
+              "youtube": 0.0024,
+              "netflix": 0.0063,
+              "prime": 0.0063
+            },
+            "confidence": 0.9325,
+            "answer_confidence": 0.9849,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.4989,
+              "on": 0.0257,
+              "off": 0.4754
+            },
+            "confidence": 0.2767,
+            "answer_confidence": 0.4989,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.98,
+              "heat": 0.004,
+              "cool": 0.0159
+            },
+            "confidence": 0.9017,
+            "answer_confidence": 0.98,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 596,
+          "output_tokens": 0,
+          "state_tokens": 13,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "multilingual",
+          "repo": "convaiinnovations/laya/multilingual",
+          "reason": "explicit model='multilingual'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "greeting",
+      "model": "multilingual",
+      "command": "Hello! How are you today?",
+      "expected": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "off",
+        "light_mode": "night",
+        "strip_power": "on",
+        "strip_mood": "relax",
+        "tv_power": "on",
+        "tv_app": "prime",
+        "ac_power": "on",
+        "ac_mode": "cool"
+      },
+      "errors": {
+        "light_power": {
+          "expected": "keep",
+          "actual": "off",
+          "answer_confidence": 0.4247
+        },
+        "light_mode": {
+          "expected": "keep",
+          "actual": "night",
+          "answer_confidence": 0.436
+        },
+        "strip_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.5569
+        },
+        "strip_mood": {
+          "expected": "keep",
+          "actual": "relax",
+          "answer_confidence": 0.5828
+        },
+        "tv_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.5763
+        },
+        "tv_app": {
+          "expected": "keep",
+          "actual": "prime",
+          "answer_confidence": 0.6494
+        },
+        "ac_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.6168
+        },
+        "ac_mode": {
+          "expected": "keep",
+          "actual": "cool",
+          "answer_confidence": 0.95
+        }
+      },
+      "elapsed_ms": 2466.4,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "off",
+            "probabilities": {
+              "keep": 0.2213,
+              "on": 0.354,
+              "off": 0.4247
+            },
+            "confidence": 0.0305,
+            "answer_confidence": 0.4247,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "night",
+            "probabilities": {
+              "keep": 0.2702,
+              "night": 0.436,
+              "normal": 0.2937
+            },
+            "confidence": 0.0212,
+            "answer_confidence": 0.436,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.3623,
+              "on": 0.5569,
+              "off": 0.0808
+            },
+            "confidence": 0.1834,
+            "answer_confidence": 0.5569,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "relax",
+            "probabilities": {
+              "keep": 0.1054,
+              "relax": 0.5828,
+              "focus": 0.0138,
+              "party": 0.2851,
+              "movie": 0.0129
+            },
+            "confidence": 0.3634,
+            "answer_confidence": 0.5828,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.2406,
+              "on": 0.5763,
+              "off": 0.1832
+            },
+            "confidence": 0.1159,
+            "answer_confidence": 0.5763,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "prime",
+            "probabilities": {
+              "keep": 0.1474,
+              "youtube": 0.0772,
+              "netflix": 0.126,
+              "prime": 0.6494
+            },
+            "confidence": 0.2633,
+            "answer_confidence": 0.6494,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.1784,
+              "on": 0.6168,
+              "off": 0.2048
+            },
+            "confidence": 0.1532,
+            "answer_confidence": 0.6168,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "cool",
+            "probabilities": {
+              "keep": 0.0353,
+              "heat": 0.0147,
+              "cool": 0.95
+            },
+            "confidence": 0.7918,
+            "answer_confidence": 0.95,
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 548,
+          "output_tokens": 0,
+          "state_tokens": 7,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "multilingual",
+          "repo": "convaiinnovations/laya/multilingual",
+          "reason": "explicit model='multilingual'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "unsupported",
+      "model": "multilingual",
+      "command": "Unlock the front door.",
+      "expected": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "off",
+        "light_mode": "normal",
+        "strip_power": "on",
+        "strip_mood": "relax",
+        "tv_power": "on",
+        "tv_app": "prime",
+        "ac_power": "off",
+        "ac_mode": "cool"
+      },
+      "errors": {
+        "light_power": {
+          "expected": "keep",
+          "actual": "off",
+          "answer_confidence": 0.6404
+        },
+        "light_mode": {
+          "expected": "keep",
+          "actual": "normal",
+          "answer_confidence": 0.4655
+        },
+        "strip_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.7074
+        },
+        "strip_mood": {
+          "expected": "keep",
+          "actual": "relax",
+          "answer_confidence": 0.7824
+        },
+        "tv_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.5712
+        },
+        "tv_app": {
+          "expected": "keep",
+          "actual": "prime",
+          "answer_confidence": 0.7068
+        },
+        "ac_power": {
+          "expected": "keep",
+          "actual": "off",
+          "answer_confidence": 0.5915
+        },
+        "ac_mode": {
+          "expected": "keep",
+          "actual": "cool",
+          "answer_confidence": 0.5378
+        }
+      },
+      "elapsed_ms": 1952.2,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "off",
+            "probabilities": {
+              "keep": 0.1314,
+              "on": 0.2282,
+              "off": 0.6404
+            },
+            "confidence": 0.1906,
+            "answer_confidence": 0.6404,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "normal",
+            "probabilities": {
+              "keep": 0.4229,
+              "night": 0.1116,
+              "normal": 0.4655
+            },
+            "confidence": 0.1219,
+            "answer_confidence": 0.4655,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.1874,
+              "on": 0.7074,
+              "off": 0.1052
+            },
+            "confidence": 0.2758,
+            "answer_confidence": 0.7074,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "relax",
+            "probabilities": {
+              "keep": 0.1318,
+              "relax": 0.7824,
+              "focus": 0.0339,
+              "party": 0.0289,
+              "movie": 0.023
+            },
+            "confidence": 0.526,
+            "answer_confidence": 0.7824,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0896,
+              "on": 0.5712,
+              "off": 0.3391
+            },
+            "confidence": 0.1782,
+            "answer_confidence": 0.5712,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "prime",
+            "probabilities": {
+              "keep": 0.1097,
+              "youtube": 0.0533,
+              "netflix": 0.1302,
+              "prime": 0.7068
+            },
+            "confidence": 0.3441,
+            "answer_confidence": 0.7068,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "off",
+            "probabilities": {
+              "keep": 0.0415,
+              "on": 0.367,
+              "off": 0.5915
+            },
+            "confidence": 0.2622,
+            "answer_confidence": 0.5915,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "cool",
+            "probabilities": {
+              "keep": 0.3582,
+              "heat": 0.104,
+              "cool": 0.5378
+            },
+            "confidence": 0.1473,
+            "answer_confidence": 0.5378,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          }
+        },
+        "usage": {
+          "input_tokens": 532,
+          "output_tokens": 0,
+          "state_tokens": 5,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "multilingual",
+          "repo": "convaiinnovations/laya/multilingual",
+          "reason": "explicit model='multilingual'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "ambiguous",
+      "model": "multilingual",
+      "command": "Turn it on.",
+      "expected": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "on",
+        "light_mode": "normal",
+        "strip_power": "on",
+        "strip_mood": "keep",
+        "tv_power": "on",
+        "tv_app": "prime",
+        "ac_power": "on",
+        "ac_mode": "heat"
+      },
+      "errors": {
+        "light_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.9992
+        },
+        "light_mode": {
+          "expected": "keep",
+          "actual": "normal",
+          "answer_confidence": 0.467
+        },
+        "strip_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.9975
+        },
+        "tv_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.9937
+        },
+        "tv_app": {
+          "expected": "keep",
+          "actual": "prime",
+          "answer_confidence": 0.3578
+        },
+        "ac_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.9976
+        },
+        "ac_mode": {
+          "expected": "keep",
+          "actual": "heat",
+          "answer_confidence": 0.3753
+        }
+      },
+      "elapsed_ms": 1965.0,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0003,
+              "on": 0.9992,
+              "off": 0.0004
+            },
+            "confidence": 0.9939,
+            "answer_confidence": 0.9992,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "normal",
+            "probabilities": {
+              "keep": 0.2416,
+              "night": 0.2914,
+              "normal": 0.467
+            },
+            "confidence": 0.0369,
+            "answer_confidence": 0.467,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0016,
+              "on": 0.9975,
+              "off": 0.0008
+            },
+            "confidence": 0.9828,
+            "answer_confidence": 0.9975,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.4511,
+              "relax": 0.1776,
+              "focus": 0.041,
+              "party": 0.1113,
+              "movie": 0.219
+            },
+            "confidence": 0.1463,
+            "answer_confidence": 0.4511,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0033,
+              "on": 0.9937,
+              "off": 0.003
+            },
+            "confidence": 0.9614,
+            "answer_confidence": 0.9937,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "prime",
+            "probabilities": {
+              "keep": 0.2647,
+              "youtube": 0.2133,
+              "netflix": 0.1642,
+              "prime": 0.3578
+            },
+            "confidence": 0.0292,
+            "answer_confidence": 0.3578,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0012,
+              "on": 0.9976,
+              "off": 0.0012
+            },
+            "confidence": 0.9831,
+            "answer_confidence": 0.9976,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "heat",
+            "probabilities": {
+              "keep": 0.294,
+              "heat": 0.3753,
+              "cool": 0.3308
+            },
+            "confidence": 0.0045,
+            "answer_confidence": 0.3753,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          }
+        },
+        "usage": {
+          "input_tokens": 524,
+          "output_tokens": 0,
+          "state_tokens": 4,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "multilingual",
+          "repo": "convaiinnovations/laya/multilingual",
+          "reason": "explicit model='multilingual'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "japanese",
+      "model": "multilingual",
+      "command": "エアコンをつけて、暖房モードにしてください。",
+      "expected": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "on",
+        "ac_mode": "heat"
+      },
+      "actual": {
+        "light_power": "on",
+        "light_mode": "keep",
+        "strip_power": "on",
+        "strip_mood": "relax",
+        "tv_power": "on",
+        "tv_app": "keep",
+        "ac_power": "on",
+        "ac_mode": "keep"
+      },
+      "errors": {
+        "light_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.7651
+        },
+        "strip_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.5259
+        },
+        "strip_mood": {
+          "expected": "keep",
+          "actual": "relax",
+          "answer_confidence": 0.6715
+        },
+        "tv_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.7448
+        },
+        "ac_mode": {
+          "expected": "heat",
+          "actual": "keep",
+          "answer_confidence": 0.5976
+        }
+      },
+      "elapsed_ms": 1959.4,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.1497,
+              "on": 0.7651,
+              "off": 0.0852
+            },
+            "confidence": 0.3638,
+            "answer_confidence": 0.7651,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.5805,
+              "night": 0.2668,
+              "normal": 0.1527
+            },
+            "confidence": 0.1306,
+            "answer_confidence": 0.5805,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.4245,
+              "on": 0.5259,
+              "off": 0.0496
+            },
+            "confidence": 0.2258,
+            "answer_confidence": 0.5259,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "relax",
+            "probabilities": {
+              "keep": 0.2731,
+              "relax": 0.6715,
+              "focus": 0.0451,
+              "party": 0.0048,
+              "movie": 0.0056
+            },
+            "confidence": 0.4929,
+            "answer_confidence": 0.6715,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.2073,
+              "on": 0.7448,
+              "off": 0.0479
+            },
+            "confidence": 0.3709,
+            "answer_confidence": 0.7448,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.9963,
+              "youtube": 0.0007,
+              "netflix": 0.0009,
+              "prime": 0.0021
+            },
+            "confidence": 0.9797,
+            "answer_confidence": 0.9963,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.1172,
+              "on": 0.8113,
+              "off": 0.0715
+            },
+            "confidence": 0.4451,
+            "answer_confidence": 0.8113,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.5976,
+              "heat": 0.1655,
+              "cool": 0.2369
+            },
+            "confidence": 0.1385,
+            "answer_confidence": 0.5976,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          }
+        },
+        "usage": {
+          "input_tokens": 572,
+          "output_tokens": 0,
+          "state_tokens": 10,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "multilingual",
+          "repo": "convaiinnovations/laya/multilingual",
+          "reason": "explicit model='multilingual'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "romanized_nepali",
+      "model": "multilingual",
+      "command": "batti on gara ani night mode ma rakha",
+      "expected": {
+        "light_power": "on",
+        "light_mode": "night",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "off",
+        "light_mode": "night",
+        "strip_power": "on",
+        "strip_mood": "relax",
+        "tv_power": "on",
+        "tv_app": "prime",
+        "ac_power": "on",
+        "ac_mode": "cool"
+      },
+      "errors": {
+        "light_power": {
+          "expected": "on",
+          "actual": "off",
+          "answer_confidence": 0.5711
+        },
+        "strip_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.6251
+        },
+        "strip_mood": {
+          "expected": "keep",
+          "actual": "relax",
+          "answer_confidence": 0.4095
+        },
+        "tv_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.6178
+        },
+        "tv_app": {
+          "expected": "keep",
+          "actual": "prime",
+          "answer_confidence": 0.8943
+        },
+        "ac_power": {
+          "expected": "keep",
+          "actual": "on",
+          "answer_confidence": 0.5867
+        },
+        "ac_mode": {
+          "expected": "keep",
+          "actual": "cool",
+          "answer_confidence": 0.5221
+        }
+      },
+      "elapsed_ms": 2641.0,
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "off",
+            "probabilities": {
+              "keep": 0.1228,
+              "on": 0.3061,
+              "off": 0.5711
+            },
+            "confidence": 0.1445,
+            "answer_confidence": 0.5711,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "night",
+            "probabilities": {
+              "keep": 0.0399,
+              "night": 0.9271,
+              "normal": 0.033
+            },
+            "confidence": 0.7166,
+            "answer_confidence": 0.9271,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.2425,
+              "on": 0.6251,
+              "off": 0.1324
+            },
+            "confidence": 0.1763,
+            "answer_confidence": 0.6251,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "relax",
+            "probabilities": {
+              "keep": 0.1488,
+              "relax": 0.4095,
+              "focus": 0.0337,
+              "party": 0.3574,
+              "movie": 0.0506
+            },
+            "confidence": 0.2034,
+            "answer_confidence": 0.4095,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0778,
+              "on": 0.6178,
+              "off": 0.3044
+            },
+            "confidence": 0.2188,
+            "answer_confidence": 0.6178,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "prime",
+            "probabilities": {
+              "keep": 0.0514,
+              "youtube": 0.0165,
+              "netflix": 0.0379,
+              "prime": 0.8943
+            },
+            "confidence": 0.6796,
+            "answer_confidence": 0.8943,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.146,
+              "on": 0.5867,
+              "off": 0.2673
+            },
+            "confidence": 0.1385,
+            "answer_confidence": 0.5867,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "cool",
+            "probabilities": {
+              "keep": 0.3631,
+              "heat": 0.1148,
+              "cool": 0.5221
+            },
+            "confidence": 0.1301,
+            "answer_confidence": 0.5221,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          }
+        },
+        "usage": {
+          "input_tokens": 572,
+          "output_tokens": 0,
+          "state_tokens": 10,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "multilingual",
+          "repo": "convaiinnovations/laya/multilingual",
+          "reason": "explicit model='multilingual'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "japanese",
+      "model": "auto",
+      "routing": {
+        "model": "multilingual",
+        "repo": "convaiinnovations/laya/multilingual",
+        "reason": "non-Latin script (kana, 100% of letters); the English checkpoint cannot read it",
+        "detection": {
+          "script": "kana",
+          "script_profile": {
+            "kana": 0.9,
+            "han": 0.1
+          },
+          "language": null,
+          "is_english": false,
+          "language_undecided": true,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 1.0,
+          "mixed_segment": null
+        },
+        "workflow": null
+      },
+      "elapsed_ms": 2918.1,
+      "actual": {
+        "light_power": "on",
+        "light_mode": "keep",
+        "strip_power": "on",
+        "strip_mood": "relax",
+        "tv_power": "on",
+        "tv_app": "keep",
+        "ac_power": "on",
+        "ac_mode": "keep"
+      },
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.1497,
+              "on": 0.7651,
+              "off": 0.0852
+            },
+            "confidence": 0.3638,
+            "answer_confidence": 0.7651,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.5805,
+              "night": 0.2668,
+              "normal": 0.1527
+            },
+            "confidence": 0.1306,
+            "answer_confidence": 0.5805,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.4245,
+              "on": 0.5259,
+              "off": 0.0496
+            },
+            "confidence": 0.2258,
+            "answer_confidence": 0.5259,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "relax",
+            "probabilities": {
+              "keep": 0.2731,
+              "relax": 0.6715,
+              "focus": 0.0451,
+              "party": 0.0048,
+              "movie": 0.0056
+            },
+            "confidence": 0.4929,
+            "answer_confidence": 0.6715,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.2073,
+              "on": 0.7448,
+              "off": 0.0479
+            },
+            "confidence": 0.3709,
+            "answer_confidence": 0.7448,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.9963,
+              "youtube": 0.0007,
+              "netflix": 0.0009,
+              "prime": 0.0021
+            },
+            "confidence": 0.9797,
+            "answer_confidence": 0.9963,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.1172,
+              "on": 0.8113,
+              "off": 0.0715
+            },
+            "confidence": 0.4451,
+            "answer_confidence": 0.8113,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.5976,
+              "heat": 0.1655,
+              "cool": 0.2369
+            },
+            "confidence": 0.1385,
+            "answer_confidence": 0.5976,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          }
+        },
+        "usage": {
+          "input_tokens": 572,
+          "output_tokens": 0,
+          "state_tokens": 10,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "multilingual",
+          "repo": "convaiinnovations/laya/multilingual",
+          "reason": "explicit model='multilingual'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    },
+    {
+      "case": "romanized_nepali",
+      "model": "auto",
+      "routing": {
+        "model": "english",
+        "repo": "convaiinnovations/laya",
+        "reason": "English Latin text",
+        "detection": {
+          "script": "latin",
+          "script_profile": {
+            "latin": 1.0
+          },
+          "language": "en",
+          "is_english": true,
+          "language_undecided": false,
+          "diacritic_rate": 0.0,
+          "non_latin_fraction": 0.0,
+          "mixed_segment": null
+        },
+        "workflow": null
+      },
+      "elapsed_ms": 7250.8,
+      "actual": {
+        "light_power": "on",
+        "light_mode": "night",
+        "strip_power": "on",
+        "strip_mood": "relax",
+        "tv_power": "on",
+        "tv_app": "keep",
+        "ac_power": "on",
+        "ac_mode": "heat"
+      },
+      "raw": {
+        "model": "laya-rl-agent",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.1162,
+              "on": 0.8119,
+              "off": 0.0719
+            },
+            "confidence": 0.446,
+            "answer_confidence": 0.8119,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "night",
+            "probabilities": {
+              "keep": 0.1431,
+              "night": 0.7184,
+              "normal": 0.1385
+            },
+            "confidence": 0.2812,
+            "answer_confidence": 0.7184,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.1048,
+              "on": 0.7674,
+              "off": 0.1278
+            },
+            "confidence": 0.3606,
+            "answer_confidence": 0.7674,
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "relax",
+            "probabilities": {
+              "keep": 0.1813,
+              "relax": 0.3593,
+              "focus": 0.0783,
+              "party": 0.1816,
+              "movie": 0.1994
+            },
+            "confidence": 0.0629,
+            "answer_confidence": 0.3593,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.2373,
+              "on": 0.5959,
+              "off": 0.1668
+            },
+            "confidence": 0.1366,
+            "answer_confidence": 0.5959,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.4376,
+              "youtube": 0.2456,
+              "netflix": 0.193,
+              "prime": 0.1238
+            },
+            "confidence": 0.0748,
+            "answer_confidence": 0.4376,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.1542,
+              "on": 0.7293,
+              "off": 0.1165
+            },
+            "confidence": 0.3,
+            "answer_confidence": 0.7293,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "heat",
+            "probabilities": {
+              "keep": 0.3155,
+              "heat": 0.3535,
+              "cool": 0.331
+            },
+            "confidence": 0.001,
+            "answer_confidence": 0.3535,
+            "action": {
+              "act_probability": 1.0
+            },
+            "low_confidence": true
+          }
+        },
+        "usage": {
+          "input_tokens": 616,
+          "output_tokens": 0,
+          "state_tokens": 13,
+          "state_tokens_dropped": 0,
+          "truncated": false,
+          "truncated_questions": []
+        },
+        "routing": {
+          "model": "english",
+          "repo": "convaiinnovations/laya",
+          "reason": "explicit model='english'",
+          "detection": null,
+          "workflow": null
+        }
+      }
+    }
+  ]
+}

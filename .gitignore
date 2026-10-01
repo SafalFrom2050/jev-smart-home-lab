@@ -1,0 +1,13 @@
+.venv/
+.cache/
+laya/
+logs/
+__pycache__/
+*.pid
+
+.ruff_cache/
+.pytest_cache/
+.env
+.env.*
+.secrets/
+*-preview.jpg

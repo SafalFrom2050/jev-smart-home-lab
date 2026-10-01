@@ -1,0 +1,761 @@
+{
+  "profile": "scoped",
+  "rows": [
+    {
+      "case": "user_example",
+      "command": "open youtube in android tv and set the lights to night mode",
+      "expected": {
+        "light_power": "keep",
+        "light_mode": "night",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "youtube",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "keep",
+        "light_mode": "night",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "youtube",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "errors": {},
+      "raw": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "off": 0.0,
+              "keep": 0.97,
+              "on": 0.03
+            },
+            "confidence": 0.96,
+            "answer_confidence": 0.97
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "night",
+            "probabilities": {
+              "keep": 0.0,
+              "normal": 0.0,
+              "night": 1.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "off": 0.0,
+              "keep": 1.0,
+              "on": 0.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "relax": 0.04,
+              "movie": 0.03,
+              "keep": 0.93,
+              "focus": 0.0,
+              "party": 0.0
+            },
+            "confidence": 0.92,
+            "answer_confidence": 0.93
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "off": 0.0,
+              "keep": 0.99,
+              "on": 0.01
+            },
+            "confidence": 0.98,
+            "answer_confidence": 0.99
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "youtube",
+            "probabilities": {
+              "prime": 0.0,
+              "keep": 0.02,
+              "youtube": 0.98,
+              "netflix": 0.0
+            },
+            "confidence": 0.97,
+            "answer_confidence": 0.98
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "off": 0.0,
+              "keep": 1.0,
+              "on": 0.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "cool": 0.0,
+              "keep": 1.0,
+              "heat": 0.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          }
+        },
+        "usage": {
+          "input_tokens": 2680,
+          "output_tokens": 315
+        }
+      },
+      "elapsed_ms": 396.7
+    },
+    {
+      "case": "two_devices",
+      "command": "Turn on the Android TV and open Netflix. Turn on the Hyperion strips and set movie mood.",
+      "expected": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "on",
+        "strip_mood": "movie",
+        "tv_power": "on",
+        "tv_app": "netflix",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "on",
+        "strip_mood": "movie",
+        "tv_power": "on",
+        "tv_app": "netflix",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "errors": {},
+      "raw": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 1.0,
+              "on": 0.0,
+              "off": 0.0
+            },
+            "confidence": 0.99,
+            "answer_confidence": 1.0
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "normal": 0.0,
+              "night": 0.01,
+              "keep": 0.99
+            },
+            "confidence": 0.99,
+            "answer_confidence": 0.99
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0,
+              "on": 1.0,
+              "off": 0.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "movie",
+            "probabilities": {
+              "relax": 0.0,
+              "movie": 1.0,
+              "party": 0.0,
+              "focus": 0.0,
+              "keep": 0.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0,
+              "on": 1.0,
+              "off": 0.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "netflix",
+            "probabilities": {
+              "netflix": 1.0,
+              "keep": 0.0,
+              "youtube": 0.0,
+              "prime": 0.0
+            },
+            "confidence": 0.99,
+            "answer_confidence": 1.0
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 1.0,
+              "on": 0.0,
+              "off": 0.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "heat": 0.0,
+              "cool": 0.0,
+              "keep": 1.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          }
+        },
+        "usage": {
+          "input_tokens": 2689,
+          "output_tokens": 316
+        }
+      },
+      "elapsed_ms": 263.0
+    },
+    {
+      "case": "mixed_power",
+      "command": "Turn the light off and turn the AC on in heat mode. Leave the TV and strips unchanged.",
+      "expected": {
+        "light_power": "off",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "on",
+        "ac_mode": "heat"
+      },
+      "actual": {
+        "light_power": "off",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "keep",
+        "ac_power": "on",
+        "ac_mode": "heat"
+      },
+      "errors": {},
+      "raw": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "off",
+            "probabilities": {
+              "keep": 0.0,
+              "off": 1.0,
+              "on": 0.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.99,
+              "normal": 0.0,
+              "night": 0.01
+            },
+            "confidence": 0.98,
+            "answer_confidence": 0.99
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 1.0,
+              "off": 0.0,
+              "on": 0.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "focus": 0.0,
+              "movie": 0.0,
+              "keep": 1.0,
+              "party": 0.0,
+              "relax": 0.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "on": 0.0,
+              "off": 0.0,
+              "keep": 1.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "netflix": 0.0,
+              "keep": 1.0,
+              "prime": 0.0,
+              "youtube": 0.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0,
+              "off": 0.0,
+              "on": 1.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "heat",
+            "probabilities": {
+              "keep": 0.0,
+              "cool": 0.0,
+              "heat": 1.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          }
+        },
+        "usage": {
+          "input_tokens": 2688,
+          "output_tokens": 315
+        }
+      },
+      "elapsed_ms": 303.4
+    },
+    {
+      "case": "four_devices",
+      "command": "Turn the light on in night mode. Turn on the Hyperion strips in party mood. Turn the Android TV on and open Amazon Prime. Turn the AC on in cool mode.",
+      "expected": {
+        "light_power": "on",
+        "light_mode": "night",
+        "strip_power": "on",
+        "strip_mood": "party",
+        "tv_power": "on",
+        "tv_app": "prime",
+        "ac_power": "on",
+        "ac_mode": "cool"
+      },
+      "actual": {
+        "light_power": "on",
+        "light_mode": "night",
+        "strip_power": "on",
+        "strip_mood": "party",
+        "tv_power": "on",
+        "tv_app": "prime",
+        "ac_power": "on",
+        "ac_mode": "cool"
+      },
+      "errors": {},
+      "raw": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0,
+              "off": 0.0,
+              "on": 1.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "night",
+            "probabilities": {
+              "keep": 0.0,
+              "normal": 0.0,
+              "night": 1.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0,
+              "off": 0.0,
+              "on": 1.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "party",
+            "probabilities": {
+              "movie": 0.0,
+              "keep": 0.0,
+              "party": 1.0,
+              "relax": 0.0,
+              "focus": 0.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0,
+              "off": 0.0,
+              "on": 1.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "prime",
+            "probabilities": {
+              "keep": 0.0,
+              "netflix": 0.0,
+              "youtube": 0.0,
+              "prime": 1.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "on",
+            "probabilities": {
+              "keep": 0.0,
+              "off": 0.0,
+              "on": 1.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "cool",
+            "probabilities": {
+              "heat": 0.0,
+              "keep": 0.0,
+              "cool": 1.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          }
+        },
+        "usage": {
+          "input_tokens": 2705,
+          "output_tokens": 315
+        }
+      },
+      "elapsed_ms": 244.1
+    },
+    {
+      "case": "negation",
+      "command": "Do not turn on the AC. Open Netflix on the Android TV. Leave the light and strips unchanged.",
+      "expected": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "netflix",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "keep",
+        "light_mode": "keep",
+        "strip_power": "keep",
+        "strip_mood": "keep",
+        "tv_power": "keep",
+        "tv_app": "netflix",
+        "ac_power": "keep",
+        "ac_mode": "keep"
+      },
+      "errors": {},
+      "raw": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 1.0,
+              "off": 0.0,
+              "on": 0.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "night": 0.0,
+              "normal": 0.0,
+              "keep": 1.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 1.0,
+              "off": 0.0,
+              "on": 0.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "relax": 0.0,
+              "party": 0.0,
+              "focus": 0.0,
+              "movie": 0.0,
+              "keep": 1.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 0.94,
+              "off": 0.0,
+              "on": 0.06
+            },
+            "confidence": 0.92,
+            "answer_confidence": 0.94
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "netflix",
+            "probabilities": {
+              "netflix": 1.0,
+              "youtube": 0.0,
+              "prime": 0.0,
+              "keep": 0.0
+            },
+            "confidence": 0.99,
+            "answer_confidence": 1.0
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "keep": 1.0,
+              "off": 0.0,
+              "on": 0.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "heat": 0.0,
+              "cool": 0.0,
+              "keep": 1.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          }
+        },
+        "usage": {
+          "input_tokens": 2689,
+          "output_tokens": 316
+        }
+      },
+      "elapsed_ms": 275.5
+    },
+    {
+      "case": "all_off",
+      "command": "Turn off all devices.",
+      "expected": {
+        "light_power": "off",
+        "light_mode": "keep",
+        "strip_power": "off",
+        "strip_mood": "keep",
+        "tv_power": "off",
+        "tv_app": "keep",
+        "ac_power": "off",
+        "ac_mode": "keep"
+      },
+      "actual": {
+        "light_power": "off",
+        "light_mode": "keep",
+        "strip_power": "off",
+        "strip_mood": "keep",
+        "tv_power": "off",
+        "tv_app": "keep",
+        "ac_power": "off",
+        "ac_mode": "keep"
+      },
+      "errors": {},
+      "raw": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "light_power": {
+            "type": "choice",
+            "choice": "off",
+            "probabilities": {
+              "off": 0.9,
+              "keep": 0.1,
+              "on": 0.0
+            },
+            "confidence": 0.85,
+            "answer_confidence": 0.9
+          },
+          "light_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "night": 0.0,
+              "keep": 1.0,
+              "normal": 0.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          },
+          "strip_power": {
+            "type": "choice",
+            "choice": "off",
+            "probabilities": {
+              "off": 0.92,
+              "on": 0.0,
+              "keep": 0.08
+            },
+            "confidence": 0.87,
+            "answer_confidence": 0.92
+          },
+          "strip_mood": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "movie": 0.0,
+              "focus": 0.0,
+              "relax": 0.0,
+              "party": 0.0,
+              "keep": 1.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          },
+          "tv_power": {
+            "type": "choice",
+            "choice": "off",
+            "probabilities": {
+              "off": 0.99,
+              "keep": 0.01,
+              "on": 0.0
+            },
+            "confidence": 0.98,
+            "answer_confidence": 0.99
+          },
+          "tv_app": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "netflix": 0.0,
+              "youtube": 0.0,
+              "prime": 0.0,
+              "keep": 1.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          },
+          "ac_power": {
+            "type": "choice",
+            "choice": "off",
+            "probabilities": {
+              "off": 0.96,
+              "keep": 0.04,
+              "on": 0.0
+            },
+            "confidence": 0.94,
+            "answer_confidence": 0.96
+          },
+          "ac_mode": {
+            "type": "choice",
+            "choice": "keep",
+            "probabilities": {
+              "cool": 0.0,
+              "keep": 1.0,
+              "heat": 0.0
+            },
+            "confidence": 1.0,
+            "answer_confidence": 1.0
+          }
+        },
+        "usage": {
+          "input_tokens": 2673,
+          "output_tokens": 315
+        }
+      },
+      "elapsed_ms": 235.0
+    }
+  ]
+}
